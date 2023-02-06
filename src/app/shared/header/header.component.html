@@ -15,12 +15,12 @@
         <form [formGroup]="formGroup" class="col-12 col-lg-6 mb-3 mb-lg-0 me-lg-3" role="search">
             <mat-form-field>
               <mat-label>
-                Employee
+                Busca por nome da escola
               </mat-label>
               <input formControlName="employee" matInput type="text" [matAutocomplete]="auto" />
               <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let item of filteredOptions" [value]="item">
-                  <a href="">{{item.nome}}</a>
+                <mat-option *ngFor="let item of filteredOptions" [value]="item.nome">
+                  <a href="/school/{{item.cod}}">{{item.nome}}</a>
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
@@ -63,6 +63,14 @@
             <li><a class="dropdown-item" href="#">Sign out</a></li>
           </ul>
         </div>
+      </div>
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/questionnaire" class="nav-link px-2 link-secondary">Questionário</a></li>
+          <li><a href="/school-methodologies" class="nav-link px-2 link-dark">Metodologias de Ensino</a></li>
+          <li><a href="/school-search" class="nav-link px-2 link-dark">Busca de Escolas</a></li>
+          <!-- <li><a href="#" class="nav-link px-2 link-dark">Products</a></li> -->
+        </ul>
       </div>
     </div>
   </header>

@@ -1,1 +1,67 @@
-<p>school-list works!</p>
+<div class="container">
+<h1>Encontre a melhor escola!</h1>
+
+<form [formGroup]="formGroup" class="col-12  mb-3" role="search">
+    <mat-form-field class="col-12">
+      <mat-label>
+        Busca por nome da escola
+      </mat-label>
+      <input class="col-12" formControlName="schoolName" matInput type="text" [matAutocomplete]="auto" />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let item of schoolList" [value]="item.nome">
+          <a href="/school/{{item.cod}}">{{item.nome}}</a>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Estado</mat-label>
+        <mat-select [(ngModel)]="selectedState" name="state">
+          <mat-option *ngFor="let state of states" [value]="state.value">
+            {{state.viewValue}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Cidade</mat-label>
+        <mat-select [(ngModel)]="selectedCity" name="state">
+          <mat-option *ngFor="let city of cities" [value]="city.value">
+            {{city.viewValue}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Metodologia</mat-label>
+        <mat-select [(ngModel)]="selectedMethodology" name="state">
+          <mat-option *ngFor="let methodology of methodologies" [value]="methodology.value">
+            {{methodology.viewValue}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Série</mat-label>
+        <mat-select [(ngModel)]="selectedGrade" name="state">
+          <mat-option *ngFor="let grade of grades" [value]="grade.value">
+            {{grade.viewValue}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="showList=true"> Buscar escola</button> 
+  </form>
+
+<mat-list role="list" *ngIf="showList">
+    <mat-list-item role="listitem" *ngFor="let school of schoolList">
+        <mat-card>
+            <mat-card-content>
+                <span>{{school.nome}}</span>
+                <button mat-raised-button color="primary" (click)="goTo(school.cod)">Mais informações</button>     
+            </mat-card-content>
+          </mat-card>
+        
+    </mat-list-item>
+</mat-list>
+</div>

@@ -5,6 +5,8 @@ import { FooterComponent } from './footer/footer.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import {MatListModule} from '@angular/material/list';
 
 
 
@@ -18,11 +20,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatAutocompleteModule,
     MatInputModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
+    MatListModule
   ], 
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MatListModule
   ]
 })
 export class SharedModule { }

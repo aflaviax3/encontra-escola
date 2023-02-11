@@ -4,6 +4,9 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 
 
 
@@ -15,7 +18,11 @@ import {MatButtonModule} from '@angular/material/button';
     CommonModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
+    MatButtonModule,
+    MatCardModule,
+    MatSelectModule
   ]
 })
 export class QuestionnaireModule { }

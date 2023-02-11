@@ -1,16 +1,36 @@
 
 <div class="container">
 
-    <h1>Questionário</h1>
+    <h1 class="text-center text-uppercase">Questionário</h1>
 
-    <label id="example-radio-group-label">Pergunta 1:</label>
-    <mat-radio-group
-        aria-labelledby="example-radio-group-label"
-        class="example-radio-group"
-    >
-    <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
-        {{season}}
-    </mat-radio-button>
-    </mat-radio-group>
-    <button mat-raised-button color="primary">Ver resultado</button>    
+    <div class="question">
+        <label id="example-radio-group-label" class="col-12 questions-radio-group-label">Pergunta 1:</label>
+        <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="questions-radio-group"
+        >
+        <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+            {{season}}
+        </mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="action-btn text-center">
+        <button mat-raised-button color="primary" (click)="showResult()">Ver resultado</button>    
+    </div>
+
+    <div class="result" *ngIf="showList">
+        <h2 class="text-center">A metodologia ideal é : <b>Montessori</b></h2>
+        <p class="text-center">A seguir você pode conferir uma lista das escolas com a metodologia escolhida.</p>
+        <mat-list role="list" >
+            <mat-list-item class="list-item" role="listitem" *ngFor="let school of schoolList">
+                <mat-card class="list-item-card">
+                    <mat-card-content class="d-flex">
+                        <span class="col-8 d-flex">{{school.nome}}</span>
+                        <button class="col-4" mat-raised-button color="primary" (click)="goTo(school.cod)">Mais informações</button>     
+                    </mat-card-content>
+                  </mat-card>
+                
+            </mat-list-item>
+        </mat-list>
+    </div>
 </div>

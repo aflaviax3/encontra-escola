@@ -1,0 +1,33 @@
+.question {
+    border: 1px solid #e3e3e3;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.action-btn {
+    margin-top: 2rem;
+}
+
+.questions-radio-group-label {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.questions-radio-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.result {
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.list-item {
+    height: auto !important;
+    margin-bottom: 1rem;
+}
+
+.list-item-card {
+    border: 1px solid #e3e3e3;
+}

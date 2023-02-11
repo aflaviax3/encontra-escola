@@ -1,4 +1,12 @@
-img {
-    height: 50px;
-    width: 50px;
+.header {
+    &__logo {
+        height: 100px;
+        width: 100px;
+    }
+
+    &__bottom-row {
+        text-transform: uppercase;
+        border-top: 1px solid #e3e3e3;
+        padding-top: 15px;
+    }
 }

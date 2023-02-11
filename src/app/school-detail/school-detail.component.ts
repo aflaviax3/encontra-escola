@@ -24,8 +24,8 @@ export class SchoolDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe( params => this.schoolId = params["id"] );
     
-    // this.schoolDetails = this.schoolsService.getSchoolDetail(this.schoolId)[0];
-    this.schoolsService.getSchoolData(this.schoolId).subscribe(data => this.schoolDetails = data);
+     this.schoolDetails = this.schoolsService.getSchoolDetail(this.schoolId)[0];
+  //  this.schoolsService.getSchoolData(this.schoolId).subscribe(data => this.schoolDetails = data);
   }
 
   goBack(): void {

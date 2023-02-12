@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '
 import { debounceTime, distinctUntilChanged, fromEvent, map, Observable, of, switchMap, tap } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { SchoolsService } from '../../schools.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -55,7 +56,8 @@ export class HeaderComponent implements OnInit{
 
   constructor(
     private fb : FormBuilder, 
-    private schoolsService: SchoolsService){
+    private schoolsService: SchoolsService,
+    private router: Router){
 
   }
 
@@ -122,5 +124,9 @@ export class HeaderComponent implements OnInit{
 
   trackById(index:any,item:any):void{
     return item._id;
+  }
+
+  goTo(cod:number|string) {
+    this.router.navigate([cod]);
   }
 }

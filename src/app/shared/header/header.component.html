@@ -20,7 +20,7 @@
               <input formControlName="employee" matInput type="text" [matAutocomplete]="auto" />
               <mat-autocomplete #auto="matAutocomplete">
                 <mat-option *ngFor="let item of filteredOptions" [value]="item.nome">
-                  <a href="/school/{{item.cod}}">{{item.nome}}</a>
+                  <a (click)="goTo('/school/'+item.cod)" class="clickable">{{item.nome}}</a>
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
@@ -55,20 +55,20 @@
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="assets/001-brasil.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
-          <ul class="dropdown-menu text-small" style="">
+          <!-- <ul class="dropdown-menu text-small" style="">
             <li><a class="dropdown-item" href="#">New project...</a></li>
             <li><a class="dropdown-item" href="#">Settings</a></li>
             <li><a class="dropdown-item" href="#">Profile</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
+          </ul> -->
         </div>
       </div>
       <div class="d-flex flex-wrap align-items-center justify-content-between header__bottom-row" >
         <ul class="nav col-12  justify-content-center align-items-center">
-          <li><a (click)="goTo('/questionnaire')" class="nav-link px-2 link-secondary">Questionário</a></li>
-          <li><a (click)="goTo('/school-methodologies')" class="nav-link px-2 link-dark">Metodologias de Ensino</a></li>
-          <li><a href="/school-search" class="nav-link px-2 link-dark">Busca de Escolas</a></li>
+          <li><a (click)="goTo('/questionnaire')" class="nav-link px-2 link-dark clickable">Questionário</a></li>
+          <li><a (click)="goTo('/school-methodologies')" class="nav-link px-2 link-dark clickable">Metodologias de Ensino</a></li>
+          <li><a (click)="goTo('/school-search')"  class="nav-link px-2 link-dark clickable">Busca de Escolas</a></li>
           <!-- <li><a href="#" class="nav-link px-2 link-dark">Products</a></li> -->
         </ul>
       </div>

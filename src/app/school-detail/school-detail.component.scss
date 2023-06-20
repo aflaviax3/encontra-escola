@@ -21,3 +21,28 @@
     margin-right: 5px;
 }
 
+#map {
+    height: 300px;
+}
+
+.review-rating {
+    padding-right: .5rem;
+}
+
+.stars-grey {
+    background-size: 30px 20px;
+    height: 20px;
+    width: 150px;
+    background-repeat: repeat-x;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+.stars-gold {
+    background-size: 30px 20px;
+    height: 20px;
+    width: calc(100% * (var(--rating) / 5));
+    background-repeat: repeat-x;
+    display: block;
+}

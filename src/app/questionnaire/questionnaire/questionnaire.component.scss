@@ -31,3 +31,40 @@
 .list-item-card {
     border: 1px solid #e3e3e3;
 }
+
+
+.card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+li {
+    list-style-type: none;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+li .card:hover {
+    border: 1px solid blue;
+}
+
+ol {
+    padding: 0;
+}
+
+.result li {
+    list-style-type: decimal;
+    cursor: default;
+}
+
+.result-method {
+    font-size: 3rem;
+    color: blue;
+    padding: 2rem;
+}
+
+.result-details {
+    text-align: justify;
+    padding-top: 2rem;
+}

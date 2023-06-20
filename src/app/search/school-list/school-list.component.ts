@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import { SchoolsService } from '../../schools.service';
+import { Subscription } from 'rxjs';
 
 
 interface State {
@@ -29,11 +31,15 @@ interface Grade {
   styleUrls: ['./school-list.component.scss']
 })
 
-export class SchoolListComponent {
+export class SchoolListComponent implements OnInit{
 
 
   formGroup : FormGroup = new FormGroup({
-    schoolName: new FormControl()
+    selectedState: new FormControl(),
+    schoolName: new FormControl(),
+    selectedCity: new FormControl(),
+    selectedMethodology: new FormControl(),
+    selectedGrade: new FormControl()
   });
 
   selectedState: string = '';
@@ -88,11 +94,27 @@ schoolList = [
 
 showList = false;
 
-constructor(private router: Router){
+private schoolSub: Subscription;
+
+constructor(private router: Router, private schoolService: SchoolsService){
 
 }
 
-goTo(cod:number|string) {
+
+  ngOnInit(): void {
+    // this.schoolService.getSchoolsFromApi();
+    this.schoolService.getSchoolByMethod('Não informada');
+    this.schoolSub = this.schoolService.getSchoolsUpdateListener()
+    .subscribe((schools: any[]) => {
+      this.schoolList = schools;
+    });
+  }
+
+  ngOnDestroy() {
+    this.schoolSub.unsubscribe();
+  }
+
+goTo(cod:string) {
   this.router.navigate(['/school/'+cod]);
 }
 

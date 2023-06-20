@@ -3,7 +3,205 @@
 
     <h1 class="text-center text-uppercase">Questionário</h1>
 
-    <div class="question">
+    <div class="container mt-5">
+        <div class="card">
+            <div class="d-flex justify-content-center p-3">
+                <div class="quiz-header">
+                    <h4>Descubra a melhor metodologia de ensino para sua criança!</h4>
+                </div>
+            </div>
+    
+            <ng-container *ngIf="!isQuizCompleted">
+                <div class="d-flex justify-content-center py-3">
+                    <div class="score">
+                        
+                    </div>
+                    <div class="question-remain">
+                        <span style="font-style: italic;">Pergunta {{currentQuestion+1}} de {{questionList.length}}</span>
+                    </div>
+                    <div class="timer">
+                        
+                    </div>
+                </div>
+                <div class="progress mb-3">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [ngStyle]="{'width':progress+'%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="question">
+                    <div class="card">
+                        <h3>{{questionList[currentQuestion]?.questionText}}</h3>
+                    </div>
+                </div>
+                <div class="options">
+                    <ol *ngFor="let option of questionList[currentQuestion]?.options">
+                        <li (click)="answer(currentQuestion+1,option)">
+                            <div appChangeBg [isCorrect]="option.correct" class="card">
+                                {{option.text}}
+                            </div>
+                        </li>
+    
+                    </ol>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button [disabled]="currentQuestion===0" class="btn" (click)="previousQuestion()"><i class="fa text-primary fa-chevron-left fa-3x" aria-hidden="true"></i>Anterior</button>
+                    <button class="btn" (click)="resetQuiz()"><i class="fa fa-refresh text-primary fa-3x" aria-hidden="true"></i> Reiniciar</button>
+                    <button class="btn" (click)="nextQuestion()"><i class="fa text-primary fa-chevron-right fa-3x" aria-hidden="true"></i>Próximo</button>
+                </div>
+            </ng-container>
+    
+            <ng-container *ngIf="isQuizCompleted">
+                <div class="row d-flex justify-content-between">
+                     <div class="result text-center col-md-12 col-sm-12">
+                        <h3>Questionário concluído! <br>Confira o seu resultado:</h3>
+                        <p>A melhor metodologia de acordo com suas respostas é :  </p>
+                        <p class="result-method">{{orderedArray[0]?.methodName}}</p>
+
+                        <ng-container *ngFor="let method of orderedArray">
+                            <span>{{method.methodName}}</span>
+                            <div class="progress" role="progressbar" aria-label="montessori result" aria-valuenow="{{method.methodValue / questionList.length * 100}}" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" [ngStyle]="{'width': '' + (method.methodValue / questionList.length * 100) + '%'}"> {{method.methodValue / questionList.length | percent : '0.2-2'}}</div>
+                            </div>
+                        </ng-container>
+
+                        <div class="result-details">
+                            <h3 class="text-center">Sobre a Metodologia {{orderedArray[0]?.methodName}}:</h3>
+
+                            <ng-container *ngIf="orderedArray[0]?.methodName === 'Montessori'">
+                                <p>
+                                    A metodologia Montessori é um método de ensino criado pela médica e educadora 
+                                    italiana Maria Montessori. Essa abordagem educacional enfatiza a independência, 
+                                    a liberdade com responsabilidade e o respeito pelo desenvolvimento natural da criança. 
+                                    Aqui estão os principais pontos da metodologia Montessori:
+                                </p>
+                                <ul>
+                                    <li>Foco na autonomia e independência do aluno.</li>
+                                    <li>Uso de materiais educativos manipulativos para promover a aprendizagem prática e sensorial.</li>
+                                    <li>Ambiente preparado com materiais acessíveis e organizados.</li>
+                                    <li>Respeito ao ritmo individual de aprendizagem.</li>
+                                    <li>Ênfase na educação holística, abrangendo aspectos cognitivos, sociais e emocionais.</li>
+                                </ul>
+                                <p>
+                                    Esses são apenas alguns dos principais pontos da metodologia Montessori. 
+                                    Essa abordagem tem como objetivo criar um ambiente de aprendizagem rico, 
+                                    respeitando o ritmo e as necessidades individuais das crianças, estimulando 
+                                    sua curiosidade e promovendo o desenvolvimento integral.
+                                </p>
+                            </ng-container>
+                            <ng-container *ngIf="orderedArray[0]?.methodName === 'Pikler'">
+                                <p>
+                                    A metodologia Pikler é uma abordagem educacional criada pela pediatra húngara Emmi Pikler. 
+                                    Essa abordagem enfoca o desenvolvimento infantil e promove uma relação respeitosa e empática 
+                                    entre adultos e crianças. Aqui estão os principais pontos da metodologia Pikler:
+                                </p>
+                                <ul>
+                                    <li>Foco no desenvolvimento motor e emocional das crianças.</li>
+                                    <li>Ênfase no movimento livre e na exploração do ambiente.</li>
+                                    <li>Importância dada às relações afetivas entre cuidadores e crianças.</li>
+                                    <li>Ambiente seguro e adaptado às necessidades de desenvolvimento.</li>
+                                    <li>Respeito ao ritmo e à individualidade das crianças.</li>
+                                </ul>
+                                <p>
+                                    Esses são alguns dos principais pontos da metodologia Pikler. 
+                                    Essa abordagem busca promover um ambiente seguro, respeitoso e 
+                                    desafiador para as crianças, permitindo que elas se desenvolvam 
+                                    de forma independente, respeitando seu ritmo individual e incentivando 
+                                    sua autonomia.
+                                </p>
+                            </ng-container>
+                            <ng-container *ngIf="orderedArray[0]?.methodName === 'Waldorf'">
+                                <p>
+                                    A metodologia Waldorf, também conhecida como Educação Waldorf, 
+                                    é um método de ensino baseado nas ideias do filósofo austríaco Rudolf Steiner. 
+                                    Essa abordagem educacional busca desenvolver as habilidades intelectuais, 
+                                    artísticas e práticas das crianças, integrando aspectos cognitivos, 
+                                    emocionais e espirituais. Aqui estão os principais pontos da metodologia Waldorf:
+                                </p>
+                                <ul>
+                                    <li>Ênfase no desenvolvimento da imaginação e criatividade.</li>
+                                    <li>Uso de atividades artísticas, música, teatro e trabalhos manuais.</li>
+                                    <li>Ambiente acolhedor e atenção ao desenvolvimento emocional.</li>
+                                    <li>Ênfase no desenvolvimento equilibrado do corpo, mente e espírito.</li>
+                                    <li>Enfatiza o aprendizado por meio da experiência prática e não competitiva.</li>
+                                </ul>
+                                <p>
+                                    Esses são alguns dos principais pontos da metodologia Waldorf. 
+                                    Essa abordagem busca promover uma educação holística, equilibrando 
+                                    o desenvolvimento intelectual, artístico e prático das crianças, 
+                                    cultivando a imaginação, a criatividade e uma conexão significativa 
+                                    com o mundo ao seu redor.
+                                </p>
+                            </ng-container>
+                            <ng-container *ngIf="orderedArray[0]?.methodName === 'Tradicional'">
+                                <p>
+                                    A metodologia de ensino tradicional é um método convencional 
+                                    de ensino que tem sido amplamente utilizado ao longo dos anos. 
+                                    Essa abordagem educacional é baseada em um modelo de transmissão 
+                                    de conhecimento do professor para o aluno, com foco no ensino acadêmico 
+                                    e na preparação para exames. Aqui estão os principais pontos da metodologia de ensino tradicional:
+                                </p>
+                                <ul>
+                                    <li>Ênfase no ensino direto do professor para o aluno.</li>
+                                    <li>Uso de currículos padronizados e conteúdo predeterminado.</li>
+                                    <li>Sala de aula tradicional com carteiras, quadro-negro e aulas expositivas.</li>
+                                    <li>Avaliação baseada em testes e notas.</li>
+                                    <li>Abordagem mais estruturada e centrada no professor.</li>
+                                </ul>
+                                <p>
+                                    É importante notar que a metodologia de ensino tradicional tem suas vantagens e desvantagens 
+                                    e tem sido amplamente utilizada em diferentes contextos educacionais. 
+                                    No entanto, abordagens mais recentes têm buscado explorar outros métodos que 
+                                    valorizam a participação ativa dos alunos, a construção de conhecimento, 
+                                    a colaboração e a aplicação prática dos conceitos.
+                                </p>
+                            </ng-container>
+                            <ng-container *ngIf="orderedArray[0]?.methodName === 'Espiral'">
+                                <p>
+                                    A metodologia de ensino espiral é uma abordagem educacional que
+                                     enfatiza a revisão e a expansão contínua do conhecimento ao longo do tempo. 
+                                     Essa abordagem permite que os alunos se envolvam em aprendizagem gradual e 
+                                     repetida sobre os mesmos conceitos, mas em níveis de complexidade crescente. 
+                                     Aqui estão os principais pontos da metodologia de ensino espiral:
+                                </p>
+                                <ul>
+                                    <li>Aprendizagem baseada na construção do conhecimento pelo aluno.</li>
+                                    <li>Ênfase na resolução de problemas e na construção de conceitos.</li>
+                                    <li>Abordagem flexível e adaptativa às necessidades individuais dos alunos.</li>
+                                    <li>Uso de estratégias pedagógicas que promovem a participação ativa dos alunos.</li>
+                                    <li>Valorização do diálogo e da reflexão sobre o processo de aprendizagem.</li>
+                                </ul>
+                                <p>
+                                    Esses são os principais pontos da metodologia de ensino espiral. 
+                                    Essa abordagem busca promover uma progressão gradual, revisão e 
+                                    aprofundamento dos conceitos, construção de conexões e
+                                     desenvolvimento de habilidades de pensamento crítico, 
+                                     proporcionando uma base sólida para o aprendizado contínuo dos alunos.
+                                </p>
+                            </ng-container>
+                        </div>
+
+                        <div class="result-list">
+                            <h3>Aqui está uma lista com as escolas que possuem a metodologia {{orderedArray[0]?.methodName}}:</h3>
+
+                            <mat-list role="list">
+                                <mat-list-item class="list-item" role="listitem" *ngFor="let school of schoolList">
+                                    <mat-card class="list-item-card">
+                                        <mat-card-content class="d-flex">
+                                            <span class="col-8 d-flex">{{school.nome}}</span>
+                                            <button class="col-4" mat-raised-button color="primary" (click)="goTo(school._id)">Mais informações</button>     
+                                        </mat-card-content>
+                                      </mat-card>
+                                    
+                                </mat-list-item>
+                            </mat-list>
+                        </div>
+                        
+                    </div>
+                </div>
+            </ng-container>
+    
+        </div>
+    </div>
+
+    <!-- <div class="question">
         <label id="example-radio-group-label" class="col-12 questions-radio-group-label">Pergunta 1:</label>
         <mat-radio-group
             aria-labelledby="example-radio-group-label"
@@ -16,9 +214,9 @@
     </div>
     <div class="action-btn text-center">
         <button mat-raised-button color="primary" (click)="showResult()">Ver resultado</button>    
-    </div>
+    </div> -->
 
-    <div class="result" *ngIf="showList">
+    <!-- <div class="result" *ngIf="showList">
         <h2 class="text-center">A metodologia ideal é : <b>Montessori</b></h2>
         <p class="text-center">A seguir você pode conferir uma lista das escolas com a metodologia escolhida.</p>
         <mat-list role="list" >
@@ -31,6 +229,6 @@
                   </mat-card>
                 
             </mat-list-item>
-        </mat-list>
-    </div>
+        </mat-list>        
+    </div> -->
 </div>

@@ -16,7 +16,7 @@
 
     <mat-form-field appearance="fill" class="col-3 form-field-3">
         <mat-label>Estado</mat-label>
-        <mat-select [(ngModel)]="selectedState" name="state">
+        <mat-select name="state" formControlName="selectedState">
           <mat-option *ngFor="let state of states" [value]="state.value">
             {{state.viewValue}}
           </mat-option>
@@ -25,7 +25,7 @@
 
     <mat-form-field appearance="fill" class="col-3 form-field-3">
         <mat-label>Cidade</mat-label>
-        <mat-select [(ngModel)]="selectedCity" name="state">
+        <mat-select formControlName="selectedCity" name="state">
           <mat-option *ngFor="let city of cities" [value]="city.value">
             {{city.viewValue}}
           </mat-option>
@@ -34,7 +34,7 @@
 
     <mat-form-field appearance="fill" class="col-3 form-field-3">
         <mat-label>Metodologia</mat-label>
-        <mat-select [(ngModel)]="selectedMethodology" name="state">
+        <mat-select formControlName="selectedMethodology" name="state">
           <mat-option *ngFor="let methodology of methodologies" [value]="methodology.value">
             {{methodology.viewValue}}
           </mat-option>
@@ -43,7 +43,7 @@
 
     <mat-form-field appearance="fill" class="col-3 form-field-3">
         <mat-label>Série</mat-label>
-        <mat-select [(ngModel)]="selectedGrade" name="state">
+        <mat-select formControlName="selectedGrade" name="state">
           <mat-option *ngFor="let grade of grades" [value]="grade.value">
             {{grade.viewValue}}
           </mat-option>
@@ -58,7 +58,7 @@
         <mat-card class="list-item-card">
             <mat-card-content class="d-flex">
                 <span class="col-8 d-flex">{{school.nome}}</span>
-                <button class="col-4" mat-raised-button color="primary" (click)="goTo(school.cod)">Mais informações</button>     
+                <button class="col-4" mat-raised-button color="primary" (click)="goTo(school._id)">Mais informações</button>     
             </mat-card-content>
           </mat-card>
         

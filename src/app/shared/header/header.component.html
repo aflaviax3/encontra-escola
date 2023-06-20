@@ -51,10 +51,16 @@
               DropDown Ends  
         </form> -->
 
-        <div class="dropdown text-end">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="assets/001-brasil.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a>
+        <div class="btn-group text-end" dropdown>
+          <button 
+          class="btn btn-link dropdown-toggle"
+       
+          dropdownToggle
+          type="button"    
+          aria-controls="dropdown-animated"
+          >
+            <img src="assets/001-brasil.png" alt="mdo" width="32" height="32" class="rounded-circle"> {{siteLanguage}}
+          </button>
           <!-- <ul class="dropdown-menu text-small" style="">
             <li><a class="dropdown-item" href="#">New project...</a></li>
             <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -62,13 +68,33 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Sign out</a></li>
           </ul> -->
+          
+            <ul
+              id="dropdown-animated"
+              *dropdownMenu
+              class="dropdown-menu dropdown-menu-right"
+              role="menu"
+              aria-labelledby="button-animated"
+            >
+            <ng-container *ngFor="let language of languageList">
+              <li role="menuitem">
+                <a
+                class="dropdown-item"
+                (click)="changeSiteLanguage(language.code)">
+                  {{ language.label }}
+                </a>
+              </li>
+            </ng-container>
+          </ul>
         </div>
       </div>
       <div class="d-flex flex-wrap align-items-center justify-content-between header__bottom-row" >
         <ul class="nav col-12  justify-content-center align-items-center">
-          <li><a (click)="goTo('/questionnaire')" class="nav-link px-2 link-dark clickable">Questionário</a></li>
-          <li><a (click)="goTo('/school-methodologies')" class="nav-link px-2 link-dark clickable">Metodologias de Ensino</a></li>
-          <li><a (click)="goTo('/school-search')"  class="nav-link px-2 link-dark clickable">Busca de Escolas</a></li>
+          <!-- <li><a (click)="goTo('questionnaire')" class="nav-link px-2 link-dark clickable">Questionário</a></li> -->
+          <li><a routerLinkActive="active" routerLink="/questionnaire" class="nav-link px-2 link-dark clickable">{{"menu.method-questionnaire" | translate}}</a></li>
+          <li><a routerLinkActive="active" routerLink="/school-methodologies" class="nav-link px-2 link-dark clickable">{{"menu.methods" | translate}}</a></li>
+          <li><a routerLinkActive="active" routerLink="/school-search"  class="nav-link px-2 link-dark clickable">{{"menu.school-search" | translate}}</a></li>
+          <li><a routerLinkActive="active" routerLink="/questionnaire" class="nav-link px-2 link-dark clickable">{{"menu.career-test" | translate}}</a></li>
           <!-- <li><a href="#" class="nav-link px-2 link-dark">Products</a></li> -->
         </ul>
       </div>

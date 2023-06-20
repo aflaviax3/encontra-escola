@@ -7,7 +7,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {MatListModule} from '@angular/material/list';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownConfig, BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { NgxTranslateModule } from '../translate/translate.module';
 
 
 @NgModule({
@@ -22,12 +24,17 @@ import {MatListModule} from '@angular/material/list';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    MatListModule
+    MatListModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+    NgxTranslateModule
+
   ], 
   exports: [
     HeaderComponent,
     FooterComponent,
     MatListModule
-  ]
+  ],
+  providers: [{ provide: BsDropdownConfig, useValue: { autoClose: true } }]
 })
 export class SharedModule { }

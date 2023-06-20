@@ -3,6 +3,7 @@ import { debounceTime, distinctUntilChanged, fromEvent, map, Observable, of, swi
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { SchoolsService } from '../../schools.service';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -54,10 +55,18 @@ export class HeaderComponent implements OnInit{
   isSearching:boolean = false;
   searchedSchools: any = [];
 
+
+  siteLanguage = 'Portuguese';
+  languageList = [
+    { code: 'en', label: 'English' },
+    { code: 'pt', label: 'Português' },
+  ];
+
   constructor(
     private fb : FormBuilder, 
     private schoolsService: SchoolsService,
-    private router: Router){
+    private router: Router,
+    private translate: TranslateService){
 
   }
 
@@ -67,6 +76,18 @@ export class HeaderComponent implements OnInit{
     // this.getNames();
     this.schools = this.schoolsService.getSchools();
 
+  }
+
+  changeSiteLanguage(localeCode: string): void {
+    const selectedLanguage = this.languageList
+      .find((language) => language.code === localeCode)
+      ?.label.toString();
+    if (selectedLanguage) {
+      this.siteLanguage = selectedLanguage;
+      this.translate.use(localeCode);
+    }
+    const currentLanguage = this.translate.currentLang;
+    console.log('currentLanguage', currentLanguage);
   }
 
   initForm(){

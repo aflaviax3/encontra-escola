@@ -46,30 +46,12 @@ app.post('/api/schools', (req, res, next) => {
 });
 
 app.get('/api/schools', (req, res, next) => {
-    // const schools = [{
-        // {
-            //     "_id": {
-            //       "$oid": "6450686a7a100fcbff689fce"
-            //     },
-            //     "nome": "Colégio Adventista de São José dos Campos",
-            //     "cidade": "São José dos Campos",
-            //     "estado": "São Paulo",
-            //     "regiao": "Sudeste",
-            //     "endereco": "R. Manoel Fiel Filho, 300 - Bosque dos Eucaliptos, São José dos Campos - SP, 12233-600",
-            //     "dependenciaAdministrativa": "Privada",
-            //     "placeId": "ChIJg7UJS0q1zZQRHNL-X35L0Vo",
-            //     "metodologia": "Não informada",
-            //     "religiao": "Adventista",
-            //     "website": "https:\\saojosedoscampos.educacaoadventista.org.br",
-            //     "telefone": "(12) 3919-2200"
-            //   }
-        //   }];
-        School.find().then(documents => {
-            res.status(200).json({
-                message: 'All schools fetched successfully',
-                schools: documents
-            });
+    School.find().then(documents => {
+        res.status(200).json({
+            message: 'All schools fetched successfully',
+            schools: documents
         });
+    });
 });
 
 app.get('/api/schools/:schoolMethod', (req, res, next) => {

@@ -3,12 +3,12 @@
 
     <div class="container school-info text-left">
         <div class="row">
-            <div class="col-12 school-title">
+            <div class="col-12 school-title top">
                 <span class="category-label">Escola:</span>
                 <span>{{schoolDetails?.nome}}</span>
             </div>
         </div>
-        <div class="row">
+        <div class="row topb">
             <div class="col-6 school-title">
                 <span class="category-label">Rede:</span>
                 <!-- <span>{{schoolDetails.nome}}</span> -->
@@ -26,44 +26,50 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row main">
             <div class="col-6">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-12">
                         <div class="row">
                             <div class="col-12 school-categories">
                                 <span class="category-label">Endereço:</span>
-                                <span>XXXXXXXX</span>
+                                <span>{{schoolDetails.endereco}}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 school-categories">
                                 <span class="category-label">Nível de ensino:</span>
-                                <span>XXXXXXXX</span>
+                                <span>{{schoolDetails.nivelMinimo}} até {{schoolDetails.nivelMaximo}}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 school-categories">
                                 <span class="category-label">Metodologia de ensino:</span>
-                                <span>XXXXX</span>
+                                <span>{{schoolDetails.metodologia}}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 school-categories">
                                 <span class="category-label">Religião:</span>
-                                <span>XXXXXXX</span>
+                                <span>{{schoolDetails.religiao}}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 school-categories">
                                 <span class="category-label">Acessibilidade:</span>
-                                <span>XXXXXXXX</span>
+                                <span>Não informada</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 school-categories">
                                 <span class="category-label">Contato:</span>
-                                <span>XXXXXXXX</span>
+                                <span>{{schoolDetails.telefone}}</span>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="schoolDetails?.website">
+                            <div class="col-12 school-categories">
+                                <span class="category-label">Website:</span>
+                                <span>{{schoolDetails.website}}</span>
                             </div>
                         </div>
                     </div>

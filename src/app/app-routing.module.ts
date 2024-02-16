@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'school-search', component: SchoolListComponent},
   {path: 'school-methodologies', component: MethodologiesOverviewComponent},
   {path: 'questionnaire', component: QuestionnaireComponent},
-  {path: '*', redirectTo: 'home', pathMatch: 'full'}
+  {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({

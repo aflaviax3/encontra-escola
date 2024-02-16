@@ -84,6 +84,15 @@ private schoolsUpdated = new Subject<any[]>();
     });
   }
 
+  searchSchoolByParams(search: any){
+    
+    this.http.post<{ message: string, schools: []}>('http://localhost:3000/api/schools/search', search)
+    .subscribe((schoolsData)=>{
+      this.schools = schoolsData.schools;
+      this.schoolsUpdated.next([...this.schools]);
+    });
+  }
+
   getSchoolsUpdateListener() {
     return this.schoolsUpdated.asObservable();
   }

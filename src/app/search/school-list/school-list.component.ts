@@ -57,12 +57,16 @@ export class SchoolListComponent implements OnInit{
 
   methodologies: Methodology[] = [
     {value: 'M', viewValue: 'Montessori'},
-    {value: 'EC', viewValue: 'Espiral Construtivista'}
+    {value: 'E', viewValue: 'Espiral Construtivista'},
+    {value: 'W', viewValue: 'Waldorf'},
+    {value: 'P', viewValue: 'Pikler'},
+    {value: 'T', viewValue: 'Tradicional'}
   ];
 
   grades: Grade[] = [
     {value: 'EI', viewValue: 'Ensino Infantil'},
-    {value: 'EF', viewValue: 'Ensino Fundamental'}
+    {value: 'EF', viewValue: 'Ensino Fundamental'},
+    {value: 'EM', viewValue: 'Ensino Médio'}
   ];
 
 schoolList = [
@@ -103,7 +107,8 @@ constructor(private router: Router, private schoolService: SchoolsService){
 
   ngOnInit(): void {
     // this.schoolService.getSchoolsFromApi();
-    this.schoolService.getSchoolByMethod('Não informada');
+    // trazer depois no resultado da busca
+    // this.schoolService.getSchoolByMethod('Não informada'); 
     this.schoolSub = this.schoolService.getSchoolsUpdateListener()
     .subscribe((schools: any[]) => {
       this.schoolList = schools;
@@ -118,5 +123,14 @@ goTo(cod:string) {
   this.router.navigate(['/school/'+cod]);
 }
 
+searchSchool(formGroup : any) {
+  console.log('formGroup', formGroup)
+  this.schoolService.searchSchoolByParams(formGroup); 
+  this.schoolSub = this.schoolService.getSchoolsUpdateListener()
+    .subscribe((schools: any[]) => {
+      this.schoolList = schools;
+      this.showList = true;
+    });
+}
 
 }

@@ -1,3 +1,13 @@
+$gray: #878686;
+$purple: #832161;
+$beige: #EEF5DB;
+$blue: #094074;
+$blue-logo: #004aad;
+$black: #0D090A;
+$logo-yellow: #f4c01e;
+$logo-purple: #8c52ff;
+$logo-purple-darker: #6139af;
+
 .form-field-3 {
     padding-right: 20px;
 }
@@ -9,4 +19,15 @@
 
 .list-item-card {
     border: 1px solid #e3e3e3;
+}
+
+button.col-3.mdc-button.mdc-button--raised.mat-mdc-raised-button.mat-primary.mat-mdc-button-base {
+    margin: 0 auto;
+    display: block;
+    background: $logo-purple-darker;
+    height: 50px;
+}
+
+.serie {
+    padding-right: 0;
 }

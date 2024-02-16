@@ -1,0 +1,10 @@
+{
+    "title": "Encontra Escola (School Finder)",
+    "menu": {
+        "home": "Home",
+        "method-questionnaire": "Find out the best school method",
+        "methods": "School Methods",
+        "school-search": "School Search",
+        "career-test": "Career Test"
+    }
+}

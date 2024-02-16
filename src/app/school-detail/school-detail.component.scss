@@ -1,14 +1,37 @@
+$gray: #878686;
+$purple: #832161;
+$beige: #EEF5DB;
+$blue: #094074;
+$blue-logo: #004aad;
+$black: #0D090A;
+$logo-yellow: #f4c01e;
+$logo-purple: #8c52ff;
+$logo-purple-darker: #6139af;
+
 .school-info {
-    padding: 1rem;
-    border: 1px solid #e3e3e3;
+    padding: 0rem;
+    border: 1px solid $logo-purple-darker;
     border-radius: 20px;
+    overflow: hidden;
 }
 
-.school-title {
+.school-title.top {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    border-bottom: 1px solid #e3e3e3;
-    padding-bottom: 1rem;
+    border-bottom: 1px solid $logo-purple-darker;
+    padding: 1rem;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    background: $logo-purple-darker;
+}
+.topb {    
+    padding: 0 1rem 1rem;
+    border-bottom: 2px solid $logo-purple-darker;
+}
+
+.row.main {
+    padding: 1rem;
 }
 
 .school-categories {

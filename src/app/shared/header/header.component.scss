@@ -1,13 +1,52 @@
+$gray: #878686;
+$purple: #832161;
+$beige: #EEF5DB;
+$blue: #094074;
+$blue-logo: #004aad;
+$black: #0D090A;
+$logo-yellow: #f4c01e;
+$logo-purple: #8c52ff;
+$logo-purple-darker: #6139af;
+
+header {
+    .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    form {
+        padding-top: 1.5rem;
+    }
+}
 .header {
+
     &__logo {
         height: 100px;
         width: 100px;
+        margin: auto;
     }
 
     &__bottom-row {
         text-transform: uppercase;
         border-top: 1px solid #e3e3e3;
-        padding-top: 15px;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        background: $blue-logo;
+        ul li:not(:last-child) a {
+            border-right: 4px solid #EEF5DB;
+        }
+        ul li a {
+            font-size: 16px;
+            padding: 0 2rem !important;
+            color: #EEF5DB !important;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+    }
+
+    &__top-header {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
     }
     
 }
@@ -15,3 +54,5 @@
 .clickable {
     cursor: pointer;
 }
+
+

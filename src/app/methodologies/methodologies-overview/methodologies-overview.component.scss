@@ -1,3 +1,43 @@
+$gray: #878686;
+$purple: #832161;
+$beige: #EEF5DB;
+$blue: #094074;
+$blue-logo: #004aad;
+$black: #0D090A;
+$logo-yellow: #f4c01e;
+$logo-purple: #8c52ff;
+$logo-purple-darker: #6139af;
+
 .methodology__title {
-    border-bottom: 1px solid #e3e3e3;
+    border-bottom: 1px solid $logo-purple-darker;
+}
+
+.accordion {
+    border: 2px solid $logo-purple-darker;
+    border-radius: 20px;
+    overflow: hidden;
+
+    .accordion-item {
+        border-color: $logo-purple-darker;
+    }
+
+    h2 {
+        margin: 0;
+        background-color: $logo-purple-darker;
+
+        button {
+            text-transform: uppercase;
+            color: #fff;
+            background-color: $logo-purple-darker;
+        }
+
+        &.collapsed {
+            background-color: #fff;
+
+            button {
+                color: #0D090A;
+                background-color: #fff;
+            }
+        }
+    }
 }

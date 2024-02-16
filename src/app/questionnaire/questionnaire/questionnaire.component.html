@@ -4,9 +4,9 @@
     <h1 class="text-center text-uppercase">Questionário</h1>
 
     <div class="container mt-5">
-        <div class="card">
+        <div class="card card-outer">
             <div class="d-flex justify-content-center p-3">
-                <div class="quiz-header">
+                <div class="quiz-header" *ngIf="!isQuizCompleted">
                     <h4>Descubra a melhor metodologia de ensino para sua criança!</h4>
                 </div>
             </div>
@@ -41,11 +41,11 @@
     
                     </ol>
                 </div>
-                <div class="d-flex justify-content-between">
+                <!-- <div class="d-flex justify-content-between">
                     <button [disabled]="currentQuestion===0" class="btn" (click)="previousQuestion()"><i class="fa text-primary fa-chevron-left fa-3x" aria-hidden="true"></i>Anterior</button>
                     <button class="btn" (click)="resetQuiz()"><i class="fa fa-refresh text-primary fa-3x" aria-hidden="true"></i> Reiniciar</button>
                     <button class="btn" (click)="nextQuestion()"><i class="fa text-primary fa-chevron-right fa-3x" aria-hidden="true"></i>Próximo</button>
-                </div>
+                </div> -->
             </ng-container>
     
             <ng-container *ngIf="isQuizCompleted">
@@ -201,34 +201,4 @@
         </div>
     </div>
 
-    <!-- <div class="question">
-        <label id="example-radio-group-label" class="col-12 questions-radio-group-label">Pergunta 1:</label>
-        <mat-radio-group
-            aria-labelledby="example-radio-group-label"
-            class="questions-radio-group"
-        >
-        <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
-            {{season}}
-        </mat-radio-button>
-        </mat-radio-group>
-    </div>
-    <div class="action-btn text-center">
-        <button mat-raised-button color="primary" (click)="showResult()">Ver resultado</button>    
-    </div> -->
-
-    <!-- <div class="result" *ngIf="showList">
-        <h2 class="text-center">A metodologia ideal é : <b>Montessori</b></h2>
-        <p class="text-center">A seguir você pode conferir uma lista das escolas com a metodologia escolhida.</p>
-        <mat-list role="list" >
-            <mat-list-item class="list-item" role="listitem" *ngFor="let school of schoolList">
-                <mat-card class="list-item-card">
-                    <mat-card-content class="d-flex">
-                        <span class="col-8 d-flex">{{school.nome}}</span>
-                        <button class="col-4" mat-raised-button color="primary" (click)="goTo(school.cod)">Mais informações</button>     
-                    </mat-card-content>
-                  </mat-card>
-                
-            </mat-list-item>
-        </mat-list>        
-    </div> -->
 </div>

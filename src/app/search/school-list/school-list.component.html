@@ -4,18 +4,20 @@
 <form [formGroup]="formGroup" class="col-12  mb-3" role="search">
     <mat-form-field class="col-12">
       <mat-label>
+        <!-- traduzir -->
         Busca por nome da escola
       </mat-label>
-      <input class="col-12" formControlName="schoolName" matInput type="text" [matAutocomplete]="auto" />
-      <mat-autocomplete #auto="matAutocomplete">
+      <input class="col-12" formControlName="schoolName" matInput type="text" />
+      <!-- <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let item of schoolList" [value]="item.nome">
           <a href="/school/{{item.cod}}">{{item.nome}}</a>
         </mat-option>
-      </mat-autocomplete>
+      </mat-autocomplete> -->
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="col-3 form-field-3">
-        <mat-label>Estado</mat-label>
+      <!-- traduzir -->
+        <mat-label>Estado</mat-label> 
         <mat-select name="state" formControlName="selectedState">
           <mat-option *ngFor="let state of states" [value]="state.value">
             {{state.viewValue}}
@@ -24,6 +26,7 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="col-3 form-field-3">
+      <!-- traduzir -->
         <mat-label>Cidade</mat-label>
         <mat-select formControlName="selectedCity" name="state">
           <mat-option *ngFor="let city of cities" [value]="city.value">
@@ -33,15 +36,18 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="col-3 form-field-3">
+      <!-- traduzir -->
         <mat-label>Metodologia</mat-label>
         <mat-select formControlName="selectedMethodology" name="state">
           <mat-option *ngFor="let methodology of methodologies" [value]="methodology.value">
+            <!-- traduzir -->
             {{methodology.viewValue}}
           </mat-option>
         </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="col-3 form-field-3">
+    <mat-form-field appearance="fill" class="col-3 form-field-3 serie">
+      <!-- traduzir -->
         <mat-label>Série</mat-label>
         <mat-select formControlName="selectedGrade" name="state">
           <mat-option *ngFor="let grade of grades" [value]="grade.value">
@@ -50,14 +56,18 @@
         </mat-select>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="showList=true" class="col-3"> Buscar escola</button> 
+    <!-- traduzir -->
+    <!-- trocar pela funcao de busca -->
+    <!-- <button mat-raised-button color="primary" (click)="showList=true" class="col-3"> Buscar escola</button>  -->
+    <button mat-raised-button color="primary" (click)="searchSchool(formGroup.value)" class="col-3"> Buscar escola</button> 
   </form>
 
-  <mat-list role="list" *ngIf="showList">
+  <mat-list role="list" *ngIf="showList && schoolList.length">
     <mat-list-item class="list-item" role="listitem" *ngFor="let school of schoolList">
         <mat-card class="list-item-card">
             <mat-card-content class="d-flex">
                 <span class="col-8 d-flex">{{school.nome}}</span>
+                <!-- traduzir -->
                 <button class="col-4" mat-raised-button color="primary" (click)="goTo(school._id)">Mais informações</button>     
             </mat-card-content>
           </mat-card>

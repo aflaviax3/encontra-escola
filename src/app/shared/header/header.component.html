@@ -1,7 +1,7 @@
-<header class="p-3 mb-3 border-bottom">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-between">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+<header class=" mb-3 border-bottom">
+    <div class="container-fluid">
+      <div class="d-flex flex-wrap align-items-center justify-content-between header__top-header">
+        <a href="/" class="d-flex align-items-center col-2 text-dark text-decoration-none">
             <img class="header__logo" src="assets/encontra.png">
         </a>
 
@@ -12,7 +12,7 @@
           <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
         </ul> -->
 
-        <form [formGroup]="formGroup" class="col-12 col-lg-6 mb-3 mb-lg-0 me-lg-3" role="search">
+        <form [formGroup]="formGroup" class="col-8" role="search">
             <mat-form-field class="col-12">
               <mat-label>
                 Busca por nome da escola
@@ -51,7 +51,7 @@
               DropDown Ends  
         </form> -->
 
-        <div class="btn-group text-end" dropdown>
+        <div class="col-2 btn-group text-end" dropdown>
           <button 
           class="btn btn-link dropdown-toggle"
        
@@ -59,17 +59,11 @@
           type="button"    
           aria-controls="dropdown-animated"
           >
-            <img src="assets/001-brasil.png" alt="mdo" width="32" height="32" class="rounded-circle"> {{siteLanguage}}
+            <img *ngIf="siteLanguage !== 'English'" src="assets/001-brasil.png" alt="mdo" width="45" height="45" class="rounded-circle"> 
+            <img *ngIf="siteLanguage === 'English'" src="assets/usa.png" alt="mdo" width="45" height="45" class="rounded-circle"> 
+            <!-- {{siteLanguage}} -->
           </button>
-          <!-- <ul class="dropdown-menu text-small" style="">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul> -->
-          
-            <ul
+           <ul
               id="dropdown-animated"
               *dropdownMenu
               class="dropdown-menu dropdown-menu-right"
@@ -90,12 +84,11 @@
       </div>
       <div class="d-flex flex-wrap align-items-center justify-content-between header__bottom-row" >
         <ul class="nav col-12  justify-content-center align-items-center">
-          <!-- <li><a (click)="goTo('questionnaire')" class="nav-link px-2 link-dark clickable">Questionário</a></li> -->
+          <li><a routerLinkActive="active" routerLink="/home" class="nav-link px-2 link-dark clickable">{{"menu.home" | translate}}</a></li>
           <li><a routerLinkActive="active" routerLink="/questionnaire" class="nav-link px-2 link-dark clickable">{{"menu.method-questionnaire" | translate}}</a></li>
           <li><a routerLinkActive="active" routerLink="/school-methodologies" class="nav-link px-2 link-dark clickable">{{"menu.methods" | translate}}</a></li>
           <li><a routerLinkActive="active" routerLink="/school-search"  class="nav-link px-2 link-dark clickable">{{"menu.school-search" | translate}}</a></li>
-          <li><a routerLinkActive="active" routerLink="/questionnaire" class="nav-link px-2 link-dark clickable">{{"menu.career-test" | translate}}</a></li>
-          <!-- <li><a href="#" class="nav-link px-2 link-dark">Products</a></li> -->
+          <!-- <li><a routerLinkActive="active" routerLink="/questionnaire" class="nav-link px-2 link-dark clickable">{{"menu.career-test" | translate}}</a></li> -->
         </ul>
       </div>
     </div>

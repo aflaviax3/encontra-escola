@@ -1,7 +1,40 @@
+$gray: #878686;
+$purple: #832161;
+$beige: #EEF5DB;
+$blue: #094074;
+$blue-logo: #004aad;
+$black: #0D090A;
+$logo-yellow: #f4c01e;
+$logo-purple: #8c52ff;
+$logo-purple-darker: #6139af;
+
 .question {
-    border: 1px solid #e3e3e3;
+    border: 1px solid #6139af;
+    background: #6139af;
     padding: 20px;
     border-radius: 20px;
+
+    .card {
+        border: 1px solid #6139af;
+        background: #6139af;
+        
+        h3 {
+            color: #fff;
+            font-size: 20px;
+            margin: 0;
+        }
+    }
+}
+
+
+li .card:hover {
+    border: 1px solid #6139af;
+    background: #6139af;
+    color: #fff;
+}
+
+.bg-success {
+    background-color: $blue-logo !important;
 }
 
 .action-btn {
@@ -29,7 +62,7 @@
 }
 
 .list-item-card {
-    border: 1px solid #e3e3e3;
+    border: 2px solid $logo-purple-darker;
 }
 
 
@@ -37,6 +70,11 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 10px;
+    
+}
+
+.card-outer {
+    border: 4px solid #6139af;
 }
 
 li {
@@ -60,11 +98,32 @@ ol {
 
 .result-method {
     font-size: 3rem;
-    color: blue;
+    color: white;
     padding: 2rem;
+    background: $logo-purple-darker;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 .result-details {
     text-align: justify;
     padding-top: 2rem;
+
+    h3 {
+        color: $logo-purple-darker;
+        font-weight: 500;
+        font-size: 20px;
+    }
+
+    ul {
+        color: $blue-logo;
+    }
+}
+
+.progress {
+    height: 30px;
+    .progress-bar {
+        background: $logo-purple-darker;
+    }
 }

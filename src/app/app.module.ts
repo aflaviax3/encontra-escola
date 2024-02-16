@@ -13,6 +13,7 @@ import { SearchModule } from './search/search.module';
 import { MethodologiesModule } from './methodologies/methodologies.module';
 import { QuestionnaireModule } from './questionnaire/questionnaire.module';
 import { NgxTranslateModule } from './translate/translate.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { NgxTranslateModule } from './translate/translate.module';
         SearchModule,
         MethodologiesModule,
         QuestionnaireModule,
-        NgxTranslateModule
+        NgxTranslateModule,
+        NgbModule
     ]
 })
 export class AppModule { }
